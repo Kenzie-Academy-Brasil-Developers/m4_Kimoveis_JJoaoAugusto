@@ -8,6 +8,7 @@ export const userRouter: Router = Router();
 userRouter.post(
   "",
   middlewares.validateBody(userCreateSchema),
+  middlewares.verifyUserEmailExists,
   userControllers.create
 );
 userRouter.get(
@@ -19,13 +20,15 @@ userRouter.get(
 userRouter.patch(
   "/:id",
   middlewares.verifyToken,
-  middlewares.verifyAdmin,
+  middlewares.verifyUserIdExists,
+  middlewares.verifyUserPermission,
   middlewares.validateBody(userUpdateSchema),
-  middlewares.userVerifyIdExists,
   userControllers.update
 );
 userRouter.delete(
   "/:id",
-  middlewares.userVerifyIdExists,
+  middlewares.verifyToken,
+  middlewares.verifyUserIdExists,
+  middlewares.verifyAdmin,
   userControllers.destroy
 );

@@ -24,6 +24,9 @@ const update = async (
   payload: UserUpdate,
   foundUser: User
 ): Promise<UserReturn> => {
+  if (payload.admin && foundUser.admin !== payload.admin) {
+    return userReturnSchema.parse(foundUser);
+  }
   const updatedUser = await userRepository.save({ ...foundUser, ...payload });
   return userReturnSchema.parse(updatedUser);
 };

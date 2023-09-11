@@ -12,11 +12,10 @@ export const verifyToken = (
 
   const [_bearer, token]: Array<string> = authorization.split(" ");
   const decoded = verify(token, process.env.SECRET_KEY!);
-  console.log(decoded);
 
   res.locals = {
     ...res.locals,
-    decoded: verify(token, process.env.SECRET_KEY!),
+    decoded: decoded,
   };
 
   return next();

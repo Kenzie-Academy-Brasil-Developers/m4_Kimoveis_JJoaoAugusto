@@ -4,7 +4,7 @@ import { sessionServices } from "../services";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const token: SessionReturn = await sessionServices.create(req.body);
-  return res.status(201).json(token);
+  return res.status(200).json(token);
 };
 
 export default { create };

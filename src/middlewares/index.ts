@@ -1,13 +1,25 @@
 import { handleErrors } from "./handleErrors.middlewares";
-import { userVerifyIdExists } from "./verifyUserId.middlewares";
 import { validateBody } from "./validateBody.middlewares";
 import { verifyToken } from "./verifyToken.middlewares";
 import { verifyAdmin } from "./verifyAdmin.middlewares";
+import { verifyUserIdExists } from "./verifyUserIdExists.middlewares";
+import { verifyUserPermission } from "./verifyUserPermission.middlewares";
+import { verifyCategoryNameExists } from "./verifyCategoryNameExists.middlewares";
+import { verifyCategoryIdExists } from "./verifyCategoryIdExists.middlewares";
+import { verifyRealEstateAddressExists } from "./verifyRealEstateAddressExists.middlewares";
+import { verifyScheduleExists } from "./verifyScheduleExists.middlewares";
+import { verifyUserEmailExists } from "./verifyUserEmailExists";
 
 export default {
   handleErrors,
-  userVerifyIdExists,
   validateBody,
   verifyToken,
   verifyAdmin,
+  verifyUserIdExists,
+  verifyUserPermission,
+  verifyCategoryNameExists,
+  verifyCategoryIdExists,
+  verifyRealEstateAddressExists,
+  verifyScheduleExists,
+  verifyUserEmailExists,
 };

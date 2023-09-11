@@ -4,8 +4,8 @@ import { scheduleServices } from "../services";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const { decoded } = res.locals;
-  const userId: number = decoded.id;
-  const schedule: Schedule = await scheduleServices.create(req.body, userId);
+  const userId: number = decoded.sub;
+  const schedule: Object = await scheduleServices.create(req.body, userId);
   return res.status(201).json(schedule);
 };
 
