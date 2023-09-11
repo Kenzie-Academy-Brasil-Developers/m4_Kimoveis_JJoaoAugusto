@@ -29,7 +29,9 @@ const create = async (payload: RealEstateCreate) => {
 };
 
 const read = async () => {
-  const realEstates = await realEstateRepository.find();
+  const realEstates = await realEstateRepository.find({
+    relations: { address: true },
+  });
   return realEstates;
 };
 
