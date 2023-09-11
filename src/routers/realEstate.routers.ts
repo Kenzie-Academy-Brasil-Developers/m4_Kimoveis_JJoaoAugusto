@@ -13,4 +13,5 @@ realEstateRouter.post(
   middlewares.verifyRealEstateAddressExists,
   realEstateControllers.create
 );
+
 realEstateRouter.get("", realEstateControllers.read);

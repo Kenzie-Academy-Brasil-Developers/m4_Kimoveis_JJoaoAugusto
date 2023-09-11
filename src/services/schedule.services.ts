@@ -1,6 +1,6 @@
 import { RealEstate, Schedule, User } from "../entities";
 import { AppError } from "../errors";
-import { ScheduleCreate, ScheduleRead } from "../interfaces";
+import { ScheduleCreate } from "../interfaces";
 import {
   realEstateRepository,
   scheduleRepository,
@@ -14,7 +14,6 @@ const create = async (
   const { realEstateId, ...scheduleBody } = payload;
 
   const user: User | null = await userRepository.findOneBy({ id: userId });
-  if (!user) throw new AppError("User not found", 404);
 
   const realEstate: RealEstate | null = await realEstateRepository.findOneBy({
     id: realEstateId,
@@ -35,7 +34,7 @@ const create = async (
 
   const schedule: Schedule = scheduleRepository.create({
     realEstate: realEstate,
-    user: user,
+    user: user!,
     ...scheduleBody,
   });
   await scheduleRepository.save(schedule);
@@ -43,19 +42,11 @@ const create = async (
 };
 
 const retrieve = async (id: number) => {
-  const schedules = await scheduleRepository.findBy({
-    realEstate: { id },
+  const realEstate = await realEstateRepository.findOne({
+    where: { id: id },
+    relations: { schedule: { user: true } },
   });
-  if (schedules.length <= 0) throw new AppError("RealEstate not found", 404);
 
-  const realEstates = [];
-
-  for await (const schedule of schedules) {
-    const foundRealEstate = await realEstateRepository.findOneBy(schedule);
-    realEstates.push(foundRealEstate);
-  }
-
-  return realEstates;
+  return realEstate;
 };
-
 export default { create, retrieve };

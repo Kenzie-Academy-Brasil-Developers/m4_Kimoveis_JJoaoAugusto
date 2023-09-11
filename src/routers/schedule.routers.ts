@@ -12,9 +12,11 @@ scheduleRouter.post(
   middlewares.verifyScheduleExists,
   scheduleControllers.create
 );
+
 scheduleRouter.get(
   "/realEstate/:id",
   middlewares.verifyToken,
   middlewares.verifyAdmin,
+  middlewares.verifyRealEstatesIdExists,
   scheduleControllers.retrieve
 );

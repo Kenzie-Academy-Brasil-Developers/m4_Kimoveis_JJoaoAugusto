@@ -1,7 +1,6 @@
 import { Category } from "../entities";
-import { categoryRepository, realEstateRepository } from "../repositories";
+import { categoryRepository } from "../repositories";
 import { CategoryCreate, CategoryRead } from "../interfaces";
-import { RealEstateRead } from "../interfaces/realEstate.interfaces";
 import { AppError } from "../errors";
 
 const create = async (payload: CategoryCreate): Promise<Category> => {

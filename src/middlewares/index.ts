@@ -9,6 +9,7 @@ import { verifyCategoryIdExists } from "./verifyCategoryIdExists.middlewares";
 import { verifyRealEstateAddressExists } from "./verifyRealEstateAddressExists.middlewares";
 import { verifyScheduleExists } from "./verifyScheduleExists.middlewares";
 import { verifyUserEmailExists } from "./verifyUserEmailExists";
+import { verifyRealEstatesIdExists } from "./verifyRealEstateIdExists.middlewares";
 
 export default {
   handleErrors,
@@ -22,4 +23,5 @@ export default {
   verifyRealEstateAddressExists,
   verifyScheduleExists,
   verifyUserEmailExists,
+  verifyRealEstatesIdExists,
 };

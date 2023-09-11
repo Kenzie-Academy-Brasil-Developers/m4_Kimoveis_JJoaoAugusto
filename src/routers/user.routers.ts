@@ -11,12 +11,14 @@ userRouter.post(
   middlewares.verifyUserEmailExists,
   userControllers.create
 );
+
 userRouter.get(
   "",
   middlewares.verifyToken,
   middlewares.verifyAdmin,
   userControllers.read
 );
+
 userRouter.patch(
   "/:id",
   middlewares.verifyToken,
@@ -25,6 +27,7 @@ userRouter.patch(
   middlewares.validateBody(userUpdateSchema),
   userControllers.update
 );
+
 userRouter.delete(
   "/:id",
   middlewares.verifyToken,

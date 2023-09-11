@@ -13,6 +13,7 @@ categoryRouter.post(
   middlewares.verifyCategoryNameExists,
   categoryControllers.create
 );
+
 categoryRouter.get("", categoryControllers.read);
 
 categoryRouter.get(

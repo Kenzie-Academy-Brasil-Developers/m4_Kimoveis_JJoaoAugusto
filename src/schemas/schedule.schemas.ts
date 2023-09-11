@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { Schedule } from "../entities";
 
 export const scheduleSchema = z.object({
   id: z.number().positive(),

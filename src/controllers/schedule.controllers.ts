@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { Schedule } from "../entities";
 import { scheduleServices } from "../services";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
